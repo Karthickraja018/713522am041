@@ -7,21 +7,23 @@ class ListNode {
 public class LinkedListAddition {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         // Implement your solution here
-        ListNode dummy = new ListNode(0);
-        ListNode curr = dummy;
-        int carry = 0;
-        while(l1!=null || l2!=null || carry !=0){
-            int x=0,y=0;
+        ListNode dummy = new ListNode(0); // dummy node to start
+        ListNode curr = dummy; // current to point the point last node
+        int carry = 0; // to store carry from the addition
+        //Traverse both list untill they are null and no carry left
+        while(l1!=null || l2!=null || carry !=0){ 
+            int x=0,y=0; // initialize the x and y value for addition
             if(l1 != null){
-                x=l1.val;
+                x=l1.val; 
             }
             if(l2 != null){
                 y=l2.val;
             }
-            int sum = x + y+ carry;
-            carry = sum/10;
-            curr.next = new ListNode(sum%10);
-            curr = curr.next;
+            int sum = x + y+ carry; // calculate the sum
+            carry = sum/10; // calculate carry
+            curr.next = new ListNode(sum%10); // create new node with digit
+            curr = curr.next; //move pointer to next node
+            //For remaining element in the both the list
             if(l1!=null){
                 l1 = l1.next;
             }
@@ -31,7 +33,7 @@ public class LinkedListAddition {
             
         }
         
-        return dummy.next;
+        return dummy.next; // return the actual result without dummy node
         
         
     }
